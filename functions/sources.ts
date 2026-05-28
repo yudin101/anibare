@@ -64,3 +64,20 @@ export async function getSourceUrls(
 
   return sourceUrls;
 }
+
+export function decodeSourceUrl(sourceUrl: string): string {
+  if (!sourceUrl.startsWith("--")) {
+    return sourceUrl;
+  }
+
+  const hex = sourceUrl.slice(2); // strip --
+  const bytes = Buffer.from(hex, "hex");
+  const decoded = Buffer.alloc(bytes.length);
+
+  for (let i = 0; i < bytes.length; i++) {
+    decoded[i] = bytes[i]! ^ 0x38;
+  }
+
+  const path = decoded.toString("utf8");
+  return `https://allanime.day${path}`;
+}
