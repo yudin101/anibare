@@ -1,4 +1,4 @@
-import { ALLANIME_API, ALLANIME_REFERER, USER_AGENT } from "../constants.js";
+import { ALLANIME_API, ALLANIME_REFERER, USER_AGENT } from "../config/constants.config";
 
 const SEARCH_QUERY = `
   query(
