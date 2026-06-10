@@ -1,4 +1,4 @@
-import { ALLANIME_API, ALLANIME_REFERER, USER_AGENT } from "../config/constants.config.ts";
+import { ALLANIME_API, ALLANIME_REFERER, USER_AGENT } from "../config/constants.config";
 
 const EPISODES_QUERY = `
   query ($showId: String!) {

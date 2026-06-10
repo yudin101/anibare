@@ -10,7 +10,10 @@ export const validate = (schema: z.ZodTypeAny) => {
         params: req.params,
       }) as any;
 
-      req.query = parsed.query;
+      if (parsed.query) Object.assign(req.query, parsed.query);
+      if (parsed.body) Object.assign(req.body, parsed.body);
+      if (parsed.params) Object.assign(req.params, parsed.params);
+
       next();
     } catch (error) {
       if (error instanceof ZodError) {
