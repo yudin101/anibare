@@ -1,6 +1,6 @@
 import express, { Application } from "express";
 import { log } from "./middlewares/log.middleware";
-import routes from "./routes/index";
+import routes from "./routes";
 import { globalErrorHandler, handle404 } from "./middlewares/error.middleware";
 import { rateLimiter } from "./middlewares/rateLimit.middleware";
 import env from "./config/env.config";
