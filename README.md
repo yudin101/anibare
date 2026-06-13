@@ -25,7 +25,6 @@ npm install
 **Setup environment vairables**
 
 ```bash
-echo "NODE_ENV='development'" > .env
 echo "FRONTEND_URL='https://frontend.url'" >> .env
 echo "SERVER_URL='https://server.url'" >> .env
 echo "SERVER_PORT=server_port" >> .env
