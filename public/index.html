@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Anibare</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Anibare Search</h1>
+
+    <div>
+      <input type="text" id="search-input" placeholder="Search anime..." />
+      <button id="search-btn">Search</button>
+    </div>
+
+    <button id="back-btn" class="hidden">Go Back</button>
+
+    <ul id="results-list"></ul>
+
+    <div id="episode-section" class="section hidden">
+      <h3>Select Episode for <span id="selected-title">-</span></h3>
+      <ul id="episodes-list"></ul>
+    </div>
+
+    <div id="stream-section" class="section hidden">
+      <h3>Watching Episode <span id="selected-episode"></h3>
+      <video 
+          id="video-player" 
+          controls 
+          preload="auto" 
+          width="100%" 
+          style="max-width: 800px; background: #000;">
+          <source id="video-source" src="" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

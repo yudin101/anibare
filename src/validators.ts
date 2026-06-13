@@ -6,8 +6,8 @@ export const searchRequestSchema = z.object({
       .string({ message: "Search term must be a text string" })
       .trim()
       .min(1, { message: "Anime name search term cannot be empty" })
-      .max(100, { message: "Search term is too long" })
-  })
+      .max(100, { message: "Search term is too long" }),
+  }),
 });
 
 export const sourcesRequestSchema = z.object({
@@ -38,5 +38,24 @@ export const episodesRequestSchema = z.object({
       .trim()
       .min(1, { message: "Show ID cannot be empty" })
       .max(100, { message: "Show ID is too long" }),
+  }),
+});
+
+export const videoProxyRequestSchema = z.object({
+  query: z.object({
+    url: z
+      .string({ message: "URL must be a string" })
+      .trim()
+      .refine(
+        (val) => {
+          try {
+            new URL(val);
+            return true;
+          } catch {
+            return false;
+          }
+        },
+        { message: "URL must be a valid HTTP URL" },
+      ),
   }),
 });
