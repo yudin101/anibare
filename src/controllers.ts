@@ -56,19 +56,34 @@ export const videoProxyController = catchAsync(
   async (req: Request, res: Response) => {
     const { url } = req.query as VideoProxySchema;
 
+    const headers: Record<string, string> = {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/121.0",
+      Origin: "https://allmanga.to",
+      Referer: "https://allmanga.to",
+    };
+
+    if (req.headers.range) {
+      headers["Range"] = req.headers.range;
+    }
+
     const response = await axios({
       method: "get",
       url: decodeURIComponent(url as string),
       responseType: "stream",
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/121.0",
-        Origin: "https://allmanga.to",
-        Referer: "https://allmanga.to",
-      },
+      headers,
+      validateStatus: (status) =>
+        (status >= 200 && status < 300) || status === 206,
     });
 
-    res.set(response.headers);
+    res.set({
+      "Content-Type": response.headers["content-type"] || "video/mp4",
+      "Content-Range": response.headers["content-range"],
+      "Accept-Ranges": response.headers["accept-ranges"] || "bytes",
+      "Content-Length": response.headers["content-length"],
+    });
+
+    res.status(response.status);
     return response.data.pipe(res);
   },
 );
