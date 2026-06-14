@@ -6,7 +6,12 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>AniBare Search</h1>
+    <h1>
+      AniBare
+      <span class="github-span">
+        <a href="https://github.com/yudin101/anibare" target="_blank">GitHub</a>
+      </span>
+    </h1>
 
     <div>
       <input type="text" id="search-input" placeholder="Search anime..." />
@@ -23,16 +28,18 @@
     </div>
 
     <div id="stream-section" class="section hidden">
-      <h3>Watching Episode <span id="selected-episode"></h3>
-      <video 
-          id="video-player" 
-          controls 
-          preload="auto" 
-          width="100%" 
-          style="max-width: 800px; background: #000;">
-          <source id="video-source" src="" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+      <h3>Watching Episode <span id="selected-episode"></span></h3>
+
+      <video
+        id="video-player"
+        controls
+        preload="auto"
+        width="100%"
+        style="max-width: 800px; background: #000"
+      >
+        <source id="video-source" src="" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
 
     <script src="index.js"></script>
