@@ -1,3 +1,8 @@
+> [!WARNING]
+> **This project is archived and no longer works.**
+> I had used AllAnime's API and it no longer works because
+> they changed their API.
+
 # AniBare
 
 An absolutely bare bones anime website. Heavily inspired by [pystardust/ani-cli](https://github.com/pystardust/ani-cli).
